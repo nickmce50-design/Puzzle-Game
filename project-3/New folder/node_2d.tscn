@@ -5,12 +5,13 @@
 [ext_resource type="Texture2D" uid="uid://b6ial2qbft4du" path="res://icon.svg" id="1_wtcfe"]
 [ext_resource type="Texture2D" uid="uid://bcjbexdhx88u2" path="res://brackeys_platformer_assets/sprites/world_tileset.png" id="2_rj586"]
 [ext_resource type="Texture2D" uid="uid://dnpbvvdx4ffxc" path="res://16-bit-spike-Sheet.png" id="3_4d7sh"]
-[ext_resource type="Script" uid="uid://b1x2a5re75s8h" path="res://New folder/area_2d.gd" id="3_epypp"]
 [ext_resource type="Script" uid="uid://dvfqb05jjgloe" path="res://New folder/enemy_1.gd" id="4_rj586"]
 [ext_resource type="Script" uid="uid://ch61v6t5au8xa" path="res://New folder/lava.gd" id="6_kdubu"]
 [ext_resource type="PackedScene" uid="uid://dopfugd4r52v2" path="res://New folder/key.tscn" id="7_d21ai"]
 [ext_resource type="Script" uid="uid://bfhomd1cj0gy4" path="res://New folder/spikes.gd" id="10_ir8iy"]
 [ext_resource type="Script" uid="uid://x3tgygm6p2jn" path="res://New folder/fake_portal.gd" id="11_hqns4"]
+[ext_resource type="Script" uid="uid://dtkraiuywu7ly" path="res://New folder/platform_1.gd" id="11_vt2af"]
+[ext_resource type="Script" uid="uid://clsjgkbna7d0x" path="res://New folder/platform_2.gd" id="12_q75mh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4d7sh"]
 texture = ExtResource("2_rj586")
@@ -165,16 +166,13 @@ size = Vector2(26, 24)
 size = Vector2(30, 27)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kgfsy"]
-size = Vector2(719, 32.5)
+size = Vector2(719, 48.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ir8iy"]
-size = Vector2(799, 32)
+size = Vector2(799, 47)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n2p3v"]
 size = Vector2(24, 284)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_v5q7w"]
-size = Vector2(25, 100.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fream"]
 size = Vector2(31.375, 80)
@@ -217,6 +215,37 @@ size = Vector2(220.5, 13)
 size = Vector2(25, 89)
 
 [sub_resource type="Curve2D" id="Curve2D_hqns4"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 377, -70, 0, 0, 0, 0, 560, -71)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wab1b"]
+size = Vector2(56, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r17c6"]
+size = Vector2(15.5, 15.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6me1e"]
+size = Vector2(34, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ruksp"]
+size = Vector2(182, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c213o"]
+size = Vector2(34, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_onp11"]
+size = Vector2(16, 16)
+
+[sub_resource type="Curve2D" id="Curve2D_vt2af"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 499, 140, 0, 0, 0, 0, 273, 139)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_py75j"]
+size = Vector2(54.943344, 20.070679)
 
 [node name="Level One" type="Node2D" unique_id=1000072013]
 position = Vector2(-4, 0)
@@ -235,7 +264,7 @@ format = 2
 layer_0/tile_data = PackedInt32Array(-1572859, 0, 0, -1572858, 0, 0, -1572857, 0, 0, -1572856, 0, 0, -1572855, 0, 0, -1572854, 0, 0, -1572853, 0, 0, -1572852, 0, 0, -1572851, 0, 0, -1572850, 0, 0, -1572849, 0, 0, -1572848, 0, 0, -1572860, 0, 0, -131059, 0, 0, -131058, 0, 0, -131057, 0, 0, -131056, 0, 0, -131055, 0, 0, -131054, 0, 0, -131053, 0, 0, -131052, 0, 0, -131051, 0, 0, -131050, 0, 0, -131049, 0, 0, -131048, 0, 0, -131047, 0, 0, -131046, 0, 0)
 
 [node name="player" type="CharacterBody2D" parent="." unique_id=1582727883 groups=["player"]]
-position = Vector2(-517, 260)
+position = Vector2(280, 250)
 collision_mask = 3
 script = ExtResource("1_0e48y")
 
@@ -278,12 +307,12 @@ position = Vector2(0, 275)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=1529689842]
 light_mask = 2
-position = Vector2(-274.5, 26.75)
+position = Vector2(-274.5, 34.75)
 shape = SubResource("RectangleShape2D_kgfsy")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Floor" unique_id=1014514505]
 light_mask = 2
-position = Vector2(549.5, 27)
+position = Vector2(549.5, 34.5)
 shape = SubResource("RectangleShape2D_ir8iy")
 
 [node name="Barrier" type="StaticBody2D" parent="." unique_id=245137505]
@@ -293,23 +322,14 @@ position = Vector2(-360, 128)
 position = Vector2(-286, 44)
 shape = SubResource("RectangleShape2D_n2p3v")
 
-[node name="Door" type="Area2D" parent="." unique_id=20630132]
-position = Vector2(95, 267)
-script = ExtResource("3_epypp")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Door" unique_id=786049780]
-light_mask = 3
-position = Vector2(651, -164)
-shape = SubResource("RectangleShape2D_v5q7w")
-
 [node name="Key" parent="." unique_id=1370596145 instance=ExtResource("7_d21ai")]
-position = Vector2(-64, 299)
+position = Vector2(22, 509)
 
 [node name="tower" type="StaticBody2D" parent="." unique_id=314817084]
 position = Vector2(-494, 240)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="tower" unique_id=2109814595]
-position = Vector2(-12.6875, 6)
+position = Vector2(-12, 6)
 shape = SubResource("RectangleShape2D_fream")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="tower" unique_id=16546271]
@@ -396,19 +416,76 @@ position = Vector2(17, 2)
 [node name="Platform 1" type="Path2D" parent="." unique_id=476468250]
 position = Vector2(-64, 299)
 curve = SubResource("Curve2D_hqns4")
+script = ExtResource("11_vt2af")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Platform 1" unique_id=813001835]
+position = Vector2(377, -70)
+rotation = -0.0054644262
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Platform 1/PathFollow2D" unique_id=462314796]
+position = Vector2(350, -132)
+remote_path = NodePath("../../AnimatableBody2D")
 
-[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Platform 1/PathFollow2D" unique_id=2076394543]
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Platform 1" unique_id=2076394543]
+position = Vector2(726.27344, -203.91057)
+rotation = -0.0054644262
 
-[node name="Sprite2D" type="Sprite2D" parent="Platform 1/PathFollow2D/AnimatableBody2D" unique_id=950374765]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform 1/AnimatableBody2D" unique_id=302974966]
+position = Vector2(-349.99994, 131.99998)
+shape = SubResource("RectangleShape2D_wab1b")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform 1/PathFollow2D/AnimatableBody2D" unique_id=302974966]
+[node name="Sprite2D" type="Sprite2D" parent="Platform 1/AnimatableBody2D" unique_id=950374765]
+
+[node name="Underground" type="StaticBody2D" parent="." unique_id=1754625491]
+position = Vector2(143, 329)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Underground" unique_id=1914401304]
+position = Vector2(-49, 13)
+shape = SubResource("RectangleShape2D_r17c6")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Underground" unique_id=1343534240]
+position = Vector2(-33, 29)
+shape = SubResource("RectangleShape2D_r17c6")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Underground" unique_id=1954354614]
+position = Vector2(-10, 45.5)
+shape = SubResource("RectangleShape2D_6me1e")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Underground" unique_id=510508011]
+position = Vector2(144, 93)
+shape = SubResource("RectangleShape2D_ruksp")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Underground" unique_id=1771765056]
+position = Vector2(22, 62)
+shape = SubResource("RectangleShape2D_c213o")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Underground" unique_id=433430963]
+position = Vector2(47, 77)
+shape = SubResource("RectangleShape2D_onp11")
+
+[node name="Platform 2" type="Path2D" parent="." unique_id=1768179696]
+curve = SubResource("Curve2D_vt2af")
+script = ExtResource("12_q75mh")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Platform 2" unique_id=1483789948]
+position = Vector2(499, 140)
+rotation = -3.137168
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Platform 2/PathFollow2D" unique_id=1576144196]
+position = Vector2(49, 4)
+remote_path = NodePath("../../AnimatableBody2D")
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Platform 2" unique_id=825778124]
+position = Vector2(450.0182, 135.78323)
+rotation = -3.137168
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform 2/AnimatableBody2D" unique_id=1656602523]
+position = Vector2(-39.008957, -6.04422)
+shape = SubResource("RectangleShape2D_py75j")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform 2/AnimatableBody2D" unique_id=102812091]
 
 [connection signal="body_entered" from="enemy1/Area2D" to="enemy1" method="_on_area_2d_body_entered"]
-[connection signal="body_entered" from="Door" to="Door" method="_on_body_entered"]
 [connection signal="body_entered" from="lava" to="lava" method="_on_body_entered"]
 [connection signal="body_entered" from="Spikes" to="Spikes" method="_on_body_entered"]
 [connection signal="body_entered" from="Fake Portal" to="Fake Portal" method="_on_body_entered"]
