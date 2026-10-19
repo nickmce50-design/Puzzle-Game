@@ -1,7 +1,5 @@
-extends StaticBody2D
-signal door_opened
-var key_taken
-var door_zone
+extends Area2D
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -10,17 +8,12 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if key_taken == true:
-		if door_zone == true:
-			if Input.is_action_just_pressed("ui_accept"):
-				print('chest opened')
-				emit_signal ('chest opened')
-			
-			
 	pass
 
 
-func _on_area_2d_body_entered(body: PhysicsBody2D) -> void:
-	if key_taken == false:
-		key_taken = true
-		$sprite.queue_free()
+
+func _on_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		GameManager.collect("key")
+		print('key')
+		queue_free()

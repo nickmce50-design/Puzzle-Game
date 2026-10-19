@@ -7,11 +7,12 @@
 [ext_resource type="Texture2D" uid="uid://dnpbvvdx4ffxc" path="res://16-bit-spike-Sheet.png" id="3_4d7sh"]
 [ext_resource type="Script" uid="uid://dvfqb05jjgloe" path="res://New folder/enemy_1.gd" id="4_rj586"]
 [ext_resource type="Script" uid="uid://ch61v6t5au8xa" path="res://New folder/lava.gd" id="6_kdubu"]
-[ext_resource type="PackedScene" uid="uid://dopfugd4r52v2" path="res://New folder/key.tscn" id="7_d21ai"]
 [ext_resource type="Script" uid="uid://bfhomd1cj0gy4" path="res://New folder/spikes.gd" id="10_ir8iy"]
 [ext_resource type="Script" uid="uid://x3tgygm6p2jn" path="res://New folder/fake_portal.gd" id="11_hqns4"]
 [ext_resource type="Script" uid="uid://dtkraiuywu7ly" path="res://New folder/platform_1.gd" id="11_vt2af"]
+[ext_resource type="Script" uid="uid://cc54nqfcm80tg" path="res://New folder/key.gd" id="12_q5hfr"]
 [ext_resource type="Script" uid="uid://clsjgkbna7d0x" path="res://New folder/platform_2.gd" id="12_q75mh"]
+[ext_resource type="Script" uid="uid://b87nmhqtpwrxj" path="res://New folder/door.gd" id="13_q5hfr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4d7sh"]
 texture = ExtResource("2_rj586")
@@ -177,6 +178,9 @@ size = Vector2(24, 284)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fream"]
 size = Vector2(31.375, 80)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q75mh"]
+size = Vector2(265, 20)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6hwb5"]
 size = Vector2(148.1875, 29)
 
@@ -240,12 +244,20 @@ size = Vector2(16, 16)
 
 [sub_resource type="Curve2D" id="Curve2D_vt2af"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 499, 140, 0, 0, 0, 0, 273, 139)
+"points": PackedVector2Array(0, 0, 0, 0, 499, 140, 0, 0, 0, 0, 298, 138)
 }
 point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_py75j"]
 size = Vector2(54.943344, 20.070679)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q5hfr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oejx5"]
+size = Vector2(28.5, 78.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5jiui"]
+size = Vector2(20, 79.5)
 
 [node name="Level One" type="Node2D" unique_id=1000072013]
 position = Vector2(-4, 0)
@@ -322,15 +334,16 @@ position = Vector2(-360, 128)
 position = Vector2(-286, 44)
 shape = SubResource("RectangleShape2D_n2p3v")
 
-[node name="Key" parent="." unique_id=1370596145 instance=ExtResource("7_d21ai")]
-position = Vector2(22, 509)
-
 [node name="tower" type="StaticBody2D" parent="." unique_id=314817084]
 position = Vector2(-494, 240)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="tower" unique_id=2109814595]
 position = Vector2(-12, 6)
 shape = SubResource("RectangleShape2D_fream")
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="tower" unique_id=1892268420]
+position = Vector2(1190, -268)
+shape = SubResource("RectangleShape2D_q75mh")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="tower" unique_id=16546271]
 position = Vector2(169.09375, -19)
@@ -469,23 +482,73 @@ script = ExtResource("12_q75mh")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Platform 2" unique_id=1483789948]
 position = Vector2(499, 140)
-rotation = -3.137168
+rotation = -3.1316428
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Platform 2/PathFollow2D" unique_id=1576144196]
 position = Vector2(49, 4)
 remote_path = NodePath("../../AnimatableBody2D")
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="Platform 2" unique_id=825778124]
-position = Vector2(450.0182, 135.78323)
-rotation = -3.137168
+position = Vector2(450.04224, 135.51266)
+rotation = -3.1316428
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform 2/AnimatableBody2D" unique_id=1656602523]
-position = Vector2(-39.008957, -6.04422)
+position = Vector2(5, -1)
 shape = SubResource("RectangleShape2D_py75j")
 
 [node name="Sprite2D" type="Sprite2D" parent="Platform 2/AnimatableBody2D" unique_id=102812091]
+
+[node name="Platform 3" type="Path2D" parent="." unique_id=1898700641]
+position = Vector2(-64, 114)
+curve = SubResource("Curve2D_hqns4")
+script = ExtResource("11_vt2af")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Platform 3" unique_id=2104129823]
+position = Vector2(377, -70)
+rotation = -0.0054644262
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Platform 3/PathFollow2D" unique_id=1445609647]
+position = Vector2(350, -132)
+remote_path = NodePath("../../AnimatableBody2D")
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Platform 3" unique_id=686603119]
+position = Vector2(726.27344, -203.91057)
+rotation = -0.0054644262
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform 3/AnimatableBody2D" unique_id=1774680260]
+position = Vector2(-349.99994, 131.99998)
+shape = SubResource("RectangleShape2D_wab1b")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform 3/AnimatableBody2D" unique_id=852357390]
+
+[node name="key" type="Area2D" parent="." unique_id=1498938954]
+position = Vector2(204, 88)
+script = ExtResource("12_q5hfr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="key" unique_id=1827008595]
+position = Vector2(177, 174)
+shape = SubResource("CircleShape2D_q5hfr")
+
+[node name="door" type="Area2D" parent="." unique_id=680171774]
+position = Vector2(251, 385)
+script = ExtResource("13_q5hfr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="door" unique_id=2076291437]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(39, -13)
+shape = SubResource("RectangleShape2D_oejx5")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="door" unique_id=1165697124]
+position = Vector2(149, 166)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="door/StaticBody2D" unique_id=250872978]
+position = Vector2(-112, -177)
+shape = SubResource("RectangleShape2D_5jiui")
 
 [connection signal="body_entered" from="enemy1/Area2D" to="enemy1" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="lava" to="lava" method="_on_body_entered"]
 [connection signal="body_entered" from="Spikes" to="Spikes" method="_on_body_entered"]
 [connection signal="body_entered" from="Fake Portal" to="Fake Portal" method="_on_body_entered"]
+[connection signal="body_entered" from="key" to="key" method="_on_body_entered"]
+[connection signal="body_entered" from="door" to="door" method="_on_body_entered"]

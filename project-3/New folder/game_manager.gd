@@ -12,3 +12,12 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	print('entered')
+var inventory: Array[String] = []
+
+func collect(item_name: String) -> void:
+	if not inventory.has(item_name):
+		inventory.append(item_name)
+		print("Collected: ", item_name)
+
+func has_item(item_name: String) -> bool:
+	return inventory.has(item_name)
