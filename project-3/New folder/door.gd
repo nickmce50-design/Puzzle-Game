@@ -17,7 +17,7 @@ func _on_body_entered(body: Node2D) -> void:
 		return
 	if GameManager.has_item("key"):
 		doorblock.queue_free() # Opens by removing the door
-		return
+		
 	else:
 		print("locked.")
 		
