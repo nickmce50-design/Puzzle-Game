@@ -1,5 +1,6 @@
 extends Area2D
 
+@onready var doorblock: StaticBody2D = $StaticBody2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -11,12 +12,12 @@ func _process(delta: float) -> void:
 	pass
 
 
-
-	
-	
-
-
 func _on_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player") and body.has_key:
-		print("Door opened")
-		queue_free()
+	if not body.is_in_group("player"):
+		return
+	if GameManager.has_item("key2"):
+		doorblock.queue_free() # Opens by removing the door
+		
+	else:
+		print("locked.")
+		
