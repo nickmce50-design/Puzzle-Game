@@ -12,13 +12,8 @@ func _physics_process(delta: float) -> void:
 		print('hit wall')
 	move_and_slide()
 	
-
-
-	
-
-
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == 'player':
-		body.kill()
+		get_tree().reload_current_scene()
 		
 		
