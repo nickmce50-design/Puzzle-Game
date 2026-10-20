@@ -10,14 +10,14 @@ func _process(delta: float) -> void:
 	pass
 
 
-func _on_body_entered(body: Node2D) -> void:
-	print('entered')
-var inventory: Array[String] = []
 
+var inventory: Array[String] = []
+# creates an invintory, are sets it to empy
 func collect(item_name: String) -> void:
 	if not inventory.has(item_name):
 		inventory.append(item_name)
 		print("Collected: ", item_name)
-
+# creates a collect function, adds it into the invintory when run into
 func has_item(item_name: String) -> bool:
 	return inventory.has(item_name)
+# checks to see if the player has the item

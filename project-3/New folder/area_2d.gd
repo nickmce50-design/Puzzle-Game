@@ -15,9 +15,9 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if not body.is_in_group("player"):
 		return
-	if GameManager.has_item("key2"):
-		doorblock.queue_free() # Opens by removing the door
-		
+	if GameManager.has_item("key2"): 
+		doorblock.queue_free() 
+		# Checks GameManager for key, then Opens door by removing the door
 	else:
 		print("locked.")
 		

@@ -2,9 +2,9 @@ extends CharacterBody2D
 
 
 const SPEED = 300.0
-const JUMP_VELOCITY = -425.0
+const JUMP_VELOCITY = -435.0
 var has_key := false
-
+#Speed and setting the player to not having the key
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
@@ -24,5 +24,3 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	
-func kill():
-	queue_free()

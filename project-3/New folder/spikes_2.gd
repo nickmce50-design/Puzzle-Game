@@ -15,3 +15,4 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == 'player':
 		get_tree().reload_current_scene()
+# when the area2d/trap is entered by the player, it reloads the current scene

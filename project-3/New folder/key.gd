@@ -17,3 +17,5 @@ func _on_body_entered(body: Node2D) -> void:
 		GameManager.collect("key")
 		print('key')
 		queue_free()
+# When entered, checks to see if its the player, if so then calls gamemanger collect function for the key
+# then removes the key

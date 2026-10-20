@@ -14,3 +14,4 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == 'player':
 		get_tree().reload_current_scene()
+# if it hits the traps on the floor, it restarts current scene
